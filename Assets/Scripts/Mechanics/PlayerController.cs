@@ -33,6 +33,8 @@ namespace Platformer.Mechanics
         /*internal new*/ public AudioSource audioSource;
         public Health health;
         public bool controlEnabled = true;
+        private bool canCarry = false;
+        private bool canFly = false;
 
         bool jump;
         Vector2 move;
@@ -44,6 +46,10 @@ namespace Platformer.Mechanics
 
         private bool isPressed = false;
 
+        public List<ItemController> items = new List<ItemController>();
+
+        public Timer timer;
+
         void Awake()
         {
             health = GetComponent<Health>();
@@ -51,6 +57,7 @@ namespace Platformer.Mechanics
             collider2d = GetComponent<Collider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
+            timer = GetComponent<Timer>();
         }
 
         protected override void Update()
@@ -60,7 +67,7 @@ namespace Platformer.Mechanics
                 move.x = Input.GetAxis("Horizontal");
                 if (isPressed)
                 {
-                    Debug.Log("PRESSED");
+                    Debug.Log("PRESSED");  
                 }
                 else if (jumpState == JumpState.Grounded && Input.GetButtonDown("Jump"))
                     jumpState = JumpState.PrepareToJump;
@@ -143,6 +150,29 @@ namespace Platformer.Mechanics
         void OnMouseUp()
         {
             isPressed = false;
+        }
+
+        public void addItem(ItemController item) {
+            items.Add(item);
+        }
+
+        public void resetItems() {
+            foreach(ItemController item in items) {
+                item.reset();
+            }
+            items.Clear();
+        }
+
+        public void setAttr(bool CanFly, bool CanCarry, float Speed) {
+            canFly = CanFly;
+            canCarry = CanCarry;
+            maxSpeed = Speed;
+        }
+
+        public void resetAttr() {
+            maxSpeed = 7;
+            canFly = false;
+            canCarry = false;
         }
 
         public enum JumpState
