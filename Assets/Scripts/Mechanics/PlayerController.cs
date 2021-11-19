@@ -38,7 +38,7 @@ namespace Platformer.Mechanics
 
         bool jump;
         Vector2 move;
-        SpriteRenderer spriteRenderer;
+        public SpriteRenderer spriteRenderer;
         internal Animator animator;
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
