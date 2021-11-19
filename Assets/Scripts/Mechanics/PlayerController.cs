@@ -39,7 +39,7 @@ namespace Platformer.Mechanics
         bool jump;
         Vector2 move;
         public SpriteRenderer spriteRenderer;
-        internal Animator animator;
+        public Animator animator;
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
         public Bounds Bounds => collider2d.bounds;
@@ -173,6 +173,11 @@ namespace Platformer.Mechanics
             maxSpeed = 7;
             canFly = false;
             canCarry = false;
+        }
+
+        public void changeCollider(Collider2D collider) {
+            DestroyImmediate(GetComponent<Collider2D>());
+            this.gameObject.AddComponent<PolygonCollider2D>();
         }
 
         public enum JumpState

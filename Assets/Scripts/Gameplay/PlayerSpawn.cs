@@ -14,7 +14,8 @@ namespace Platformer.Gameplay
         public override void Execute()
         {
             var player = model.player;
-            player.collider2d.enabled = true;
+            if (player.collider2d)
+                player.collider2d.enabled = true;
             player.controlEnabled = false;
             if (player.audioSource && player.respawnAudio)
                 player.audioSource.PlayOneShot(player.respawnAudio);

@@ -1,6 +1,6 @@
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using Platformer.Core;
 using Platformer.Mechanics;
 using Platformer.Model;
@@ -24,35 +24,17 @@ public class PlayerHostInfect : Simulation.Event<PlayerHostInfect>
         player.timer.setTimeRemaining(5);
 
         player.animator.SetBool("infecting", true);
-        switch (host.animal)
-        {
-            case Animal.Type.BIRD:
-                player.spriteRenderer.sprite = player.GetComponent<HostSprites>().bird;
-                break;
-                
-            case Animal.Type.CHICKEN:
-                player.spriteRenderer.sprite = player.GetComponent<HostSprites>().chicken;
-                break;
 
-            case Animal.Type.COW:
-                player.spriteRenderer.sprite = player.GetComponent<HostSprites>().cow;
-                break;
+        HostTransformer ht = player.GetComponent<HostTransformer>();
+        HostTransformerResult result = ht.getResult(host.animal);
 
-            case Animal.Type.HORSE:
-                player.spriteRenderer.sprite = player.GetComponent<HostSprites>().horse;
-                break;
+        player.gameObject.GetComponent<Animator>().runtimeAnimatorController = result.animator.runtimeAnimatorController;
+        player.changeCollider(result.collider2d);
+        Debug.Log("Player is infected");
 
-            case Animal.Type.HUMAN:
-                player.spriteRenderer.sprite = player.GetComponent<HostSprites>().human;
-                break;
+        Debug.Log(player.collider2d);
+        // HostTransformerResult result = HostTransformer.getResult(host.animal);
 
-            case Animal.Type.RAT:
-                player.spriteRenderer.sprite = player.GetComponent<HostSprites>().rat;
-                break;
-            
-            default:
-                break;
-        }
         // player.spriteRenderer.sprite = player.GetComponent<HostSprites>().horse;
     }
 }

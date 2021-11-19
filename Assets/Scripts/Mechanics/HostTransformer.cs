@@ -1,12 +1,11 @@
 using UnityEngine;
 
-
 public class HostTransformerResult {
     public Animator animator;
     public Collider2D collider2d;
 }
 
-public class HostTransformer : MonoBehaviour {
+public class HostTransformer: MonoBehaviour {
 
     // Horse gameobject
     public GameObject horse;
@@ -29,9 +28,8 @@ public class HostTransformer : MonoBehaviour {
     // Pink gameobject
     public GameObject pink;
 
-    
 
-    public HostTransformerResult get(Animal.Type type) {
+    public HostTransformerResult getResult(Animal.Type type) {
         HostTransformerResult result = new HostTransformerResult();
         switch (type) {
             case Animal.Type.HORSE:
