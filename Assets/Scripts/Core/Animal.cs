@@ -7,6 +7,7 @@ namespace Animal
         COW,
         HUMAN,
         HORSE,
-        RAT
+        RAT,
+        PINK
     }
 }
