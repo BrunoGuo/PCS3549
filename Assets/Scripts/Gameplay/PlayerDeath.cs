@@ -31,6 +31,7 @@ namespace Platformer.Gameplay
                 player.animator.SetBool("dead", true);
                 Simulation.Schedule<PlayerSpawn>(2);
                 player.resetItems();
+                player.changeAnimal(Animal.Type.PINK);
             }
         }
     }

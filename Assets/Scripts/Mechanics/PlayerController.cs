@@ -54,10 +54,24 @@ namespace Platformer.Mechanics
         {
             health = GetComponent<Health>();
             audioSource = GetComponent<AudioSource>();
-            collider2d = GetComponent<Collider2D>();
-            spriteRenderer = GetComponent<SpriteRenderer>();
-            animator = GetComponent<Animator>();
             timer = GetComponent<Timer>();
+            getActiveComponents();
+            Debug.Log("AWAKE " + animator.name);
+        }
+
+        void getActiveComponents()
+        {
+            foreach (Transform child in transform)
+            {
+                if (child.gameObject.activeInHierarchy)
+                {
+                    Debug.Log(child.gameObject.name + " is active? " + child.gameObject.activeInHierarchy.ToString());
+                    collider2d = child.gameObject.GetComponent<Collider2D>();
+                    spriteRenderer = child.gameObject.GetComponent<SpriteRenderer>();
+                    animator = child.gameObject.GetComponent<Animator>();
+                    animator.SetBool("infecting", true);
+                }
+            }
         }
 
         protected override void Update()
@@ -175,10 +189,11 @@ namespace Platformer.Mechanics
             canCarry = false;
         }
 
-        public void changeCollider(Collider2D collider) {
-            DestroyImmediate(GetComponent<Collider2D>());
-            this.gameObject.AddComponent<PolygonCollider2D>();
+        public void changeAnimal(Animal.Type type) {
+            GetComponent<HostTransformer>().setAnimal(type);
+            getActiveComponents();
         }
+
 
         public enum JumpState
         {

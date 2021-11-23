@@ -29,7 +29,7 @@ public class PlayerHostInfect : Simulation.Event<PlayerHostInfect>
         HostTransformerResult result = ht.getResult(host.animal);
 
         player.gameObject.GetComponent<Animator>().runtimeAnimatorController = result.animator.runtimeAnimatorController;
-        player.changeCollider(result.collider2d);
+        player.changeAnimal(host.animal);
         Debug.Log("Player is infected");
 
         Debug.Log(player.collider2d);
