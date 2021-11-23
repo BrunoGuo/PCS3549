@@ -21,7 +21,7 @@ public class PlayerHostInfect : Simulation.Event<PlayerHostInfect>
         // Timer timer = player.gameObject.AddComponent<Timer>() as Timer;
         // timer.setTimeRemaining(5);
 
-        player.timer.setTimeRemaining(5);
+        player.timer.setTimeRemaining(30);
 
         player.animator.SetBool("infecting", true);
 
