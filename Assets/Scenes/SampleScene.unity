@@ -2083,7 +2083,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -9}
+  m_LocalPosition: {x: 0, y: -0.7, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2044437523}
@@ -28361,9 +28361,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b98485f45b55f49bac68a95ad6002d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canFly: 0
+  canFly: 1
   canCarry: 0
-  speed: 0
+  speed: 10
   isInfected: 0
   animal: 0
 --- !u!95 &583515497
@@ -28499,7 +28499,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canFly: 0
   canCarry: 0
-  speed: 0
+  speed: 4
   isInfected: 0
   animal: 1
 --- !u!212 &600127664
@@ -30009,7 +30009,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4520396350849616, guid: 7d60c822c3f1b408ea7a00ecdb5e047a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4520396350849616, guid: 7d60c822c3f1b408ea7a00ecdb5e047a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -30168,7 +30168,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 2.8533096
+  m_Distance: 2.8677325
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!114 &838423058
@@ -31220,8 +31220,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canFly: 0
-  canCarry: 0
-  speed: 0
+  canCarry: 1
+  speed: 7
   isInfected: 0
   animal: 4
 --- !u!212 &1338961490
@@ -33005,8 +33005,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canFly: 0
-  canCarry: 0
-  speed: 0
+  canCarry: 1
+  speed: 3
   isInfected: 0
   animal: 2
 --- !u!212 &1928463429
@@ -33256,7 +33256,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1946717923}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -9}
+  m_LocalPosition: {x: 0, y: -0.7, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 742932004}

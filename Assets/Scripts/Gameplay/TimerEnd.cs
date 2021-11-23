@@ -9,9 +9,15 @@ using static Platformer.Core.Simulation;
 
 public class TimerEnd : Simulation.Event<TimerEnd>
 {
+    PlatformerModel model = Simulation.GetModel<PlatformerModel>();
     public override void Execute() 
     {
         Debug.Log("timeout");
-        Schedule<PlayerDeath>();
+        var player = model.player;
+        if (player.animator.GetBool("infecting"))
+            Schedule<PlayerUntransform>();
+        else 
+            Schedule<PlayerDeath>();
+
     }
 }

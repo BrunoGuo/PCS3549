@@ -32,6 +32,7 @@ namespace Platformer.Gameplay
                 Simulation.Schedule<PlayerSpawn>(2);
                 player.resetItems();
                 player.changeAnimal(Animal.Type.PINK);
+                player.resetAttr();
             }
         }
     }

@@ -34,7 +34,6 @@ namespace Platformer.Mechanics
         public Health health;
         public bool controlEnabled = true;
         private bool canCarry = false;
-        private bool canFly = false;
 
         bool jump;
         Vector2 move;
@@ -49,6 +48,10 @@ namespace Platformer.Mechanics
         public List<ItemController> items = new List<ItemController>();
 
         public Timer timer;
+
+        Vector2 upForce;
+
+        private Rigidbody2D m_rigidbody;
 
         void Awake()
         {
@@ -81,7 +84,7 @@ namespace Platformer.Mechanics
                 move.x = Input.GetAxis("Horizontal");
                 if (isPressed)
                 {
-                    Debug.Log("PRESSED");  
+                    Debug.Log("PRESSED");
                 }
                 else if (jumpState == JumpState.Grounded && Input.GetButtonDown("Jump"))
                     jumpState = JumpState.PrepareToJump;
@@ -131,7 +134,15 @@ namespace Platformer.Mechanics
 
         protected override void ComputeVelocity()
         {
-            if (jump && IsGrounded)
+            if (canFly && Input.GetKey(KeyCode.W))
+            {
+                velocity.y = jumpTakeOffSpeed;
+            }
+            else if (canFly && Input.GetKey(KeyCode.S))
+            {
+                velocity.y = -jumpTakeOffSpeed / 2;
+            }
+            else if (jump && IsGrounded)
             {
                 velocity.y = jumpTakeOffSpeed * model.jumpModifier;
                 jump = false;

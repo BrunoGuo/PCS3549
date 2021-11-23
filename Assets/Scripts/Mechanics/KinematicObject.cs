@@ -36,6 +36,8 @@ namespace Platformer.Mechanics
         protected ContactFilter2D contactFilter;
         protected RaycastHit2D[] hitBuffer = new RaycastHit2D[16];
 
+        protected bool canFly = false;
+
         protected const float minMoveDistance = 0.001f;
         protected const float shellRadius = 0.01f;
 
@@ -103,7 +105,12 @@ namespace Platformer.Mechanics
         {
             //if already falling, fall faster than the jump speed, otherwise use normal gravity.
             if (velocity.y < 0)
-                velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
+            {
+                velocity.x += gravityModifier * Physics2D.gravity.x * Time.deltaTime;
+                velocity.y += gravityModifier * Physics2D.gravity.y * Time.deltaTime;
+                if (!Input.GetKey(KeyCode.S))
+                    velocity.y *= (canFly? 0 : 1);
+            }
             else
                 velocity += Physics2D.gravity * Time.deltaTime;
 

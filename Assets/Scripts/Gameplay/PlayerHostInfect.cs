@@ -30,6 +30,7 @@ public class PlayerHostInfect : Simulation.Event<PlayerHostInfect>
 
         player.gameObject.GetComponent<Animator>().runtimeAnimatorController = result.animator.runtimeAnimatorController;
         player.changeAnimal(host.animal);
+        player.setAttr(host.canFly, host.canCarry, host.speed);
         Debug.Log("Player is infected");
 
         Debug.Log(player.collider2d);
