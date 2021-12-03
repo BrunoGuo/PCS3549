@@ -6,7 +6,7 @@ using Platformer.Mechanics;
 using static Platformer.Core.Simulation;
 
 public class Timer : MonoBehaviour {
-    public float timeRemaining = 60.0f;
+    public float timeRemaining = 5.0f;
     private bool timeout = false;
 
     void Update()

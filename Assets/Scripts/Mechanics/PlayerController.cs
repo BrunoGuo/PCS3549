@@ -72,7 +72,14 @@ namespace Platformer.Mechanics
                     collider2d = child.gameObject.GetComponent<Collider2D>();
                     spriteRenderer = child.gameObject.GetComponent<SpriteRenderer>();
                     animator = child.gameObject.GetComponent<Animator>();
-                    animator.SetBool("infecting", true);
+                    if (child.gameObject.name != "pink") 
+                    {
+                        animator.SetBool("infecting", true);
+                    }
+                    else
+                    {
+                        animator.SetBool("infecting", false);
+                    }
                 }
             }
         }
@@ -198,6 +205,7 @@ namespace Platformer.Mechanics
             maxSpeed = 7;
             canFly = false;
             canCarry = false;
+            timer.setTimeRemaining(30);
         }
 
         public void changeAnimal(Animal.Type type) {
